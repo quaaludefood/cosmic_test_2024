@@ -1,4 +1,4 @@
-from models import Mutation, Pattern
+from models import Mutation
 import pandas as pd
 from pandas import DataFrame
 
@@ -20,17 +20,23 @@ def get_mutations_from_dataframe(dataframe):
         mutations.append(mutation)
     return mutations
 
-def group_mutations_by_pattern(mutations):
+def create_dict_of_patterns(mutations):
     '''Groups mutations by pattern.'''
     patterns_dict = {}
     for mutation in mutations:
-        basepair_change = f'{mutation.MutatedFromAllele}->{mutation.MutatedToAllele}'
         icgc_mutation_id = mutation.ICGCMutationId
-        if icgc_mutation_id not in patterns_dict:
-            patterns_dict[icgc_mutation_id] = Pattern(basepair_change, icgc_mutation_id, 1)
+        mutated_to_dict = {mutation.MutatedFromAllele: [icgc_mutation_id]}
+        if mutation.MutatedFromAllele not in patterns_dict:
+            patterns_dict[mutation.MutatedFromAllele] = mutated_to_dict
         else:
-            patterns_dict[icgc_mutation_id].Count += 1
+            mutated_from_dict = patterns_dict[mutation.MutatedFromAllele]
+            if mutation.MutatedToAllele not in mutated_from_dict:
+                mutated_from_dict[mutation.MutatedToAllele] = [icgc_mutation_id]
+            else:
+                patterns_dict[mutation.MutatedFromAllele][mutation.MutatedToAllele].append(icgc_mutation_id)
     return patterns_dict
+
+
 
 def generate_rows_file(rows_dict, output_path, file_name):
     '''Generates a file with the regions assigned to rows.'''
