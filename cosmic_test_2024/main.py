@@ -1,5 +1,5 @@
 from pathlib import Path
-from utils import get_dataframe_from_file
+from utils import get_dataframe_from_file, get_mutations_from_dataframe, group_mutations_by_pattern
 from datetime import datetime
 
 def main():
@@ -9,7 +9,12 @@ def main():
 
     if input_file.exists():
         dataframe = get_dataframe_from_file(input_file)
-        print(f'Dataframe generated: {dataframe}')
+        #print(f'Dataframe generated: {dataframe}')
+        mutations = get_mutations_from_dataframe(dataframe)
+        patterns = group_mutations_by_pattern(mutations)
+        #print(f'Patterns generated: {patterns}')
+        for i in patterns.keys():
+            print(patterns[i].BasepairChange, patterns[i].ICGCMutationId, patterns[i].Count)
         now = datetime.now()
         timestamp = int(now.timestamp())
         rows_file_name = f'rows_output_{timestamp}.txt'
