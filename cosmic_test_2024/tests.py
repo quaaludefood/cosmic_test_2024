@@ -18,16 +18,16 @@ class TestDataFrameFromFile(unittest.TestCase):
         data = {
             'mutated_from_allele': ['A', 'A', 'C', 'C', 'G'],
             'mutated_to_allele': ['T', 'T', 'G', 'G', 'A'],
-            'icgc_mutation_id': [1, 2, 3, 4, 5]
+            'icgc_mutation_id': ['abc', 'abc', 'def', 'ghi', 'jkl']
         }
         df = pd.DataFrame(data)
 
         # Call the function to be tested
         result = group_mutations(df)
-
+        print(result)
         # Assert the expected output
-        expected = pd.Series([2, 2, 1], index=[('A', 'T'), ('C', 'G'), ('G', 'A')])
-
+        expected = pd.Series([2, 1, 1, 1], index=[('A', 'T', 'abc'), ('C', 'G', 'def'), ('C', 'G', 'ghi'), ('G', 'A', 'jkl')])
+        print(expected)
         self.assertTrue(result.equals(expected))
 
 if __name__ == '__main__':

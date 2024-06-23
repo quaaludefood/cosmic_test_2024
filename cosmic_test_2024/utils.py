@@ -13,7 +13,7 @@ def get_dataframe_from_file(file_path):
 
 def group_mutations(dataframe):
     '''Groups mutations by mutated_from_allele, mutated_to_allele and icgc_mutation_id.'''
-    grouped = dataframe.groupby(['mutated_from_allele', 'mutated_to_allele'])['icgc_mutation_id'].count()
+    grouped = dataframe.groupby(['mutated_from_allele', 'mutated_to_allele', 'icgc_mutation_id'])['icgc_mutation_id'].count()
     return grouped
 
 
