@@ -23,11 +23,9 @@ class TestDataFrameFromFile(unittest.TestCase):
             'icgc_mutation_id': ['abc', 'abc', 'def', 'ghi', 'jkl']
         }
         df = pd.DataFrame(data)
-
         result = group_mutations(df)
-        print(result)
         expected = pd.Series([2, 2,1], index=[('A', 'T'), ('C', 'G'), ('G', 'A')])
-        print(expected)
+
         self.assertTrue(result.equals(expected))
 
 if __name__ == '__main__':
