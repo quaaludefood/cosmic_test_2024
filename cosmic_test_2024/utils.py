@@ -4,7 +4,7 @@ from pandas import DataFrame
 
 
 def get_dataframe_from_file(file_path):
-    '''Reads a file with regions and returns a list of Region objects.'''
+    '''Reads a file and returns a pandas DataFrame.'''
     try:
         df = pd.read_csv(file_path, sep='\t')
     except:
@@ -13,7 +13,7 @@ def get_dataframe_from_file(file_path):
 
 def group_mutations(dataframe):
     '''Groups mutations by mutated_from_allele, mutated_to_allele and icgc_mutation_id.'''
-    grouped = dataframe.groupby(['mutated_from_allele', 'mutated_to_allele', 'icgc_mutation_id'])['icgc_mutation_id'].count()
+    grouped = dataframe.groupby(['mutated_from_allele', 'mutated_to_allele'])['icgc_mutation_id'].count()
     return grouped
 
 
