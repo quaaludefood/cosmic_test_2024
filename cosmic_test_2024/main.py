@@ -1,6 +1,7 @@
 from pathlib import Path
-from utils import get_dataframe_from_file, get_mutations_from_dataframe, create_dict_of_patterns
+from utils import get_dataframe_from_file, group_mutations
 from datetime import datetime
+import pandas as pd
 
 def main():
     '''Main function to run the program.''' 
@@ -8,18 +9,13 @@ def main():
     output_path = Path('../output_folder')
 
     if input_file.exists():
+        pd.set_option('display.max_rows', 500)
+        pd.set_option('display.max_columns', 500)
+        pd.set_option('display.width', 150)
         dataframe = get_dataframe_from_file(input_file)
-        #print(f'Dataframe generated: {dataframe}')
-        mutations = get_mutations_from_dataframe(dataframe)
-        patterns = create_dict_of_patterns(mutations)
-        #print(f'Patterns generated: {patterns}')
-        for i in patterns.keys():
-            print(i, patterns[i])
-        now = datetime.now()
-        timestamp = int(now.timestamp())
-        rows_file_name = f'rows_output_{timestamp}.txt'
-       #generate_rows_file(rows_dict, output_path , rows_file_name)
-        #print(f'Rows file generated: {rows_file_name}')
+        grouped = group_mutations(dataframe)
+        print(grouped)
+
 
 
     else:
