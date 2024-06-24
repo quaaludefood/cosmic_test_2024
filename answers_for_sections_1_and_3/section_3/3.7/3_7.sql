@@ -1,0 +1,3 @@
+--Imagine that we have a table called “some_gene” with only a subset of the gene data. 
+--If I want to join the gene table with this table but display all the genes in the result, 
+--what kind of join would you do?
