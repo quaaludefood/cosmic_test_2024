@@ -1,0 +1,36 @@
+Question 1.1: How to properly track errors in:
+
+● Bash, when you call other Unix commands
+
+ - Bash commands exit with a status of 0 if successful or > 0 if there was an error. This error status can be printed in the terminal with:
+ echo $?
+
+ - Errors can also be captured in a text file with the following command (2 is the code of a standard error)
+ YOUR COMMAND 2> errors.txt
+
+
+● Python script
+
+- Python functions raise an exception which can be captured in a try-catch statement and printed to the terminal i.e. (n.b. it is not good coding practice to 
+have a catch-all statement for exceptions, rather capture and handle individual types of exceptions individually)
+
+e.g:
+
+try:
+    ....your code here
+
+except Exception as e:
+    raise e 
+
+Python has an in-built logging module which can be configured to write events such as errors to a file
+
+
+● Perl script
+
+I'm not familiar enough with perl to give an informed answer for this. Presumably there is a way to capture STDOUT and STDERR messages and write them to a log file.
+
+
+
+● Database command line tool, sqlplus for Oracle or psql for PostgreSQL
+
+I'm not familiar enough with the database command line to give an informed answer for this. 

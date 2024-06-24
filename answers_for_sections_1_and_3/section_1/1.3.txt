@@ -1,0 +1,11 @@
+
+Question 1.3: Why the code comment is important in Bash? And how to give proper comments in a Bash script?
+
+Code comments are important because they provide teams of software developers in-line documentation as to the function of specific lines of code.
+
+Bash comments are prefixed with the '#' symbol which the complier will ignore at run-time.
+
+It may also be helpful to print information to the terminal at runtime to allow developers to monitor its progress, e.g.
+
+dt=$(date '+%d/%m/%Y %H:%M:%S');
+echo "$dt"

@@ -1,0 +1,2 @@
+
+Question 1.2: If your Bash script contains asynchronized commands, such as IBM LSF or Slurm job schedulers, how to compose your script to make sure everything works well and exits with a proper code?
