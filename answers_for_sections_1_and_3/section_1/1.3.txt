@@ -5,7 +5,15 @@ Code comments are important because they provide teams of software developers in
 
 Bash comments are prefixed with the '#' symbol which the complier will ignore at run-time.
 
-It may also be helpful to print information to the terminal at runtime to allow developers to monitor its progress, e.g.
+It may also be helpful to print information to the terminal when a function starts and ends to allow developers to monitor its progress, e.g.
 
-dt=$(date '+%d/%m/%Y %H:%M:%S');
-echo "$dt"
+
+#!/bin/bash
+my_process () {
+   start_time=$(date '+%d/%m/%Y %H:%M:%S');
+    echo "my_process started: $dt"
+    .... 
+    finished_time=$(date '+%d/%m/%Y %H:%M:%S');
+    echo "my_process finished: $dt"
+
+}

@@ -27,8 +27,21 @@ Python has an in-built logging module which can be configured to write events su
 
 ● Perl script
 
-I'm not familiar enough with perl to give an informed answer for this. Presumably there is a way to capture STDOUT and STDERR messages and write them to a log file.
+Perl scripts can be aborted with the die command if an error is encountered, an a custom message can be added, e.g.
 
+open FILE, "filename.txt" or die "Cannot open file: $!\n";
+
+A more robust method to capture the exception can be done by wrapping the code in an eval statement. If an error occurs it will be assigned to
+the perl $@ variable, e.g.
+
+eval {
+     # code that might throw exception
+};
+if ($@) {
+    # report the exception and do something about it
+}
+
+Additional steps may be added to the if statement depending on the nature of the $@ error.
 
 
 ● Database command line tool, sqlplus for Oracle or psql for PostgreSQL

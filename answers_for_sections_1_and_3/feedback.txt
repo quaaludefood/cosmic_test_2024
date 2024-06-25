@@ -1,0 +1,8 @@
+Feedback:
+
+All in all a well-rounded set of tests.
+
+However I ran into difficulty running the Cosmic DB with Virtual Box on my laptop, my Mac has a ARM64 chip and the latest version of
+ VB is AMD64 only (it throws an error if I try to install it on my ARM64 machine). Running an older beta build designed for ARM64 
+crashed before fully initialising. Fortunately Thomas was able to provide me with a dump of the database that I could instantiate on
+my machine. Next time I suggest providing the download link for the dump in the test instructions for candidates with incompatable laptops.
