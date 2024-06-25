@@ -11,10 +11,8 @@ Question 1.1: How to properly track errors in:
 
 ● Python script
 
-- Python functions raise an exception which can be captured in a try-catch statement and printed to the terminal i.e. (n.b. it is not good coding practice to 
-have a catch-all statement for exceptions, rather capture and handle individual types of exceptions individually)
-
-e.g:
+- Python functions raise an exception which can be captured in a try-catch statement and printed to the terminal (n.b. it is not good coding practice to 
+have a catch-all statement for exceptions, rather capture and handle individual types of exceptions individually) e.g:
 
 try:
     ....your code here
@@ -22,7 +20,7 @@ try:
 except Exception as e:
     raise e 
 
-Python has an in-built logging module which can be configured to write events such as errors to a file
+Python has an in-built logging module which can be configured to write events such as errors to a file.
 
 
 ● Perl script
@@ -31,7 +29,7 @@ Perl scripts can be aborted with the die command if an error is encountered, an 
 
 open FILE, "filename.txt" or die "Cannot open file: $!\n";
 
-A more robust method to capture the exception can be done by wrapping the code in an eval statement. If an error occurs it will be assigned to
+A more robust method to capture the exception is by wrapping the code in an eval statement. If an error occurs it will be assigned to
 the perl $@ variable, e.g.
 
 eval {
@@ -46,4 +44,5 @@ Additional steps may be added to the if statement depending on the nature of the
 
 ● Database command line tool, sqlplus for Oracle or psql for PostgreSQL
 
-I'm not familiar enough with the database command line to give an informed answer for this. 
+The location of the PostgreSQL log file can be found with the SELECT * FROM pg_current_logfile(); command from the psql command line or pg_lsclusters from the Bash
+command line.

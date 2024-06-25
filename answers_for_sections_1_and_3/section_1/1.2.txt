@@ -3,18 +3,17 @@ Question 1.2: If your Bash script contains asynchronized commands, such as IBM L
 how to compose your script to make sure everything works well and exits with a proper code?
 
 
-
-Appending the process with the '&' symbol will cause it to run in the background, i.e.
+Appending the process with the '&' symbol will cause it to run in the background, e.g.
 
 mycommand &
 
-The pid of the last background command executed is captured in the $! variable, i.e.
+The pid of the last background command executed is captured in the $! variable, e.g.
 
 mycommand &
 my_pif=$!
 
 The ps command outputs the processes currently running. You can check if the pid of the background command is still running by querying the output 
-of the ps command, i.e. 
+of the ps command, e.g.
 
 ps | grep " $my_pid " 
 
